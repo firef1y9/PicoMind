@@ -1,0 +1,65 @@
+[project]
+name = "picomind"
+version = "0.1.0"
+description = "轻量级、本地优先的个人 AI 助手"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "PicoMind contributors" }]
+keywords = ["ai", "agent", "assistant", "deepseek", "cli"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+
+dependencies = [
+    "ddgs>=9.5.5,<10.0.0",
+    "httpx>=0.28.0,<1.0.0",
+    "json-repair>=0.57.0,<1.0.0",
+    "loguru>=0.7.3,<1.0.0",
+    "mcp>=1.26.0,<2.0.0",
+    "openai>=2.8.0,<3.0.0",
+    "prompt-toolkit>=3.0.50,<4.0.0",
+    "pydantic>=2.12.0,<3.0.0",
+    "pydantic-settings>=2.12.0,<3.0.0",
+    "rich>=14.0.0,<15.0.0",
+    "tomlkit>=0.13.2,<1.0.0",
+    "typer>=0.20.0,<1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=9.0.0,<10.0.0",
+    "pytest-asyncio>=1.3.0,<2.0.0",
+    "ruff>=0.1.0",
+]
+
+[project.scripts]
+picomind = "picomind.cli:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["picomind"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+markers = [
+    "live: tests that call the real external APIs",
+]
