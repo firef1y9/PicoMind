@@ -32,8 +32,6 @@ $env:PICOMIND_DEEPSEEK_API_KEY = "你的密钥"
 $env:PICOMIND_DEEPSEEK_API_KEY = (Get-Content -LiteralPath ".\deepseek api.txt" -Raw -Encoding UTF8).Trim()
 ```
 
-该文件已被 Git 忽略。
-
 ## 快速开始
 
 ```powershell

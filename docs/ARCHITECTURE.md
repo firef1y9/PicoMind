@@ -68,9 +68,3 @@ MCP 调用、子 Agent 和 Shell 进程树。
 引用都会拒绝 `.env`、私钥、credentials 文件和本地 DeepSeek Key 文件。
 
 这是应用层边界，不是容器或操作系统级沙箱。
-
-## 明确不做
-
-PicoMind 当前不包含聊天渠道、Gateway、Cron、Heartbeat 或多 Provider
-路由。这些能力对当前单用户 CLI 范围不是必需项，并会显著扩大生命周期和
-故障处理复杂度。
